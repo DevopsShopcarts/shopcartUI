@@ -2,8 +2,9 @@ import React from 'react'
 
 import Typography from '@mui/material/Typography'
 import Grid from '@mui/material/Grid'
+import PropTypes from 'prop-types'
 
-class Product_Field {
+class ProductField extends React.Component {
   constructor (props) {
     super(props)
     this.render = this.render.bind(this)
@@ -25,3 +26,15 @@ class Product_Field {
     )
   }
 }
+
+ProductField.propTypes = {
+  field_name: PropTypes.string,
+  field_val: PropTypes.any
+}
+
+ProductField.defaultProps = {
+  field_name: 'Field Not Found',
+  field_val: 'Field Value Not Found'
+}
+
+export default ProductField

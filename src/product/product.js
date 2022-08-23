@@ -20,6 +20,8 @@ import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import Grid from '@mui/material/Grid'
 
+import ProductField from './product_field'
+
 class Product extends React.Component {
   constructor (props) {
     super(props)
@@ -66,8 +68,9 @@ class Product extends React.Component {
               <ListItem>
                 <Card sx={{ minWidth: 320 }}>
                   <CardContent>
+                    <ProductField />
                     <Grid container spacing={2}>
-                      <Grid item xs="12" md={4}>
+                      <Grid item xs='12' md={4}>
                         <Typography
                           sx={{ fontSize: 14 }}
                           color='text.secondary'
@@ -76,7 +79,7 @@ class Product extends React.Component {
                           Quantity:
                         </Typography>
                       </Grid>
-                      <Grid item xs="12" md={8}>
+                      <Grid item xs='12' md={8}>
                         <Typography
                           sx={{ fontSize: 14 }}
                           color='text.secondary'
@@ -86,7 +89,6 @@ class Product extends React.Component {
                         </Typography>
                       </Grid>
                     </Grid>
-                    
                   </CardContent>
                   <CardActions>
                     <Button size='small'>Learn More</Button>
