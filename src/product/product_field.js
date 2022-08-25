@@ -13,12 +13,12 @@ class ProductField extends React.Component {
     return (
       <Grid container spacing={2}>
         <Grid item xs='12' md={4}>
-          <Typography sx={{ fontSize: 14 }} color='text.secondary' gutterBottom>
-            {this.props.field_name}
+          <Typography sx={{ fontSize: 14 }} color='text.primary' gutterBottom>
+            {this.props.field_name}:
           </Typography>
         </Grid>
         <Grid item xs='12' md={8}>
-          <Typography sx={{ fontSize: 14 }} color='text.secondary' gutterBottom>
+          <Typography sx={{ fontSize: 14 }} color='text.primary' gutterBottom>
             {this.props.field_val}
           </Typography>
         </Grid>

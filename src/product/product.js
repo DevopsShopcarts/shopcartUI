@@ -5,7 +5,7 @@ import ListItemButton from '@mui/material/ListItemButton'
 import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
 import Collapse from '@mui/material/Collapse'
-import InboxIcon from '@mui/icons-material/MoveToInbox'
+// import InboxIcon from '@mui/icons-material/MoveToInbox'
 // import DraftsIcon from '@mui/icons-material/Drafts'
 // import SendIcon from '@mui/icons-material/Send'
 import ExpandLess from '@mui/icons-material/ExpandLess'
@@ -17,8 +17,9 @@ import Card from '@mui/material/Card'
 import CardActions from '@mui/material/CardActions'
 import CardContent from '@mui/material/CardContent'
 import Button from '@mui/material/Button'
-import Typography from '@mui/material/Typography'
-import Grid from '@mui/material/Grid'
+import InventoryIcon from '@mui/icons-material/Inventory'
+// import Typography from '@mui/material/Typography'
+// import Grid from '@mui/material/Grid'
 
 import ProductField from './product_field'
 
@@ -38,7 +39,7 @@ class Product extends React.Component {
   }
   handleClick () {
     console.log(this.state)
-    this.setState((state, props) => {
+    this.setState((state, _) => {
       return { open: !state.open }
     })
   }
@@ -52,15 +53,15 @@ class Product extends React.Component {
           aria-labelledby='nested-list-subheader'
           subheader={
             <ListSubheader component='div' id='nested-list-subheader'>
-              Nested List Items
+              Shopcart Search Result
             </ListSubheader>
           }
         >
           <ListItemButton onClick={this.handleClick}>
             <ListItemIcon>
-              <InboxIcon />
+              <InventoryIcon />
             </ListItemIcon>
-            <ListItemText primary='Inbox' />
+            <ListItemText primary={`Product: ${this.state.id}`} />
             {this.state.open ? <ExpandLess /> : <ExpandMore />}
           </ListItemButton>
           <Collapse in={this.state.open} timeout='auto' unmountOnExit>
@@ -68,42 +69,28 @@ class Product extends React.Component {
               <ListItem>
                 <Card sx={{ minWidth: 320 }}>
                   <CardContent>
-                    <ProductField />
-                    <Grid container spacing={2}>
-                      <Grid item xs='12' md={4}>
-                        <Typography
-                          sx={{ fontSize: 14 }}
-                          color='text.secondary'
-                          gutterBottom
-                        >
-                          Quantity:
-                        </Typography>
-                      </Grid>
-                      <Grid item xs='12' md={8}>
-                        <Typography
-                          sx={{ fontSize: 14 }}
-                          color='text.secondary'
-                          gutterBottom
-                        >
-                          200
-                        </Typography>
-                      </Grid>
-                    </Grid>
+                    <ProductField field_name='ID' field_val={this.state.id} />
+                    <ProductField
+                      field_name='Shopcart ID'
+                      field_val={this.state.shopcart_id}
+                    />
+                    <ProductField
+                      field_name='Name'
+                      field_val={this.state.name}
+                    />
+                    <ProductField
+                      field_name='Price'
+                      field_val={this.state.price}
+                    />
+                    <ProductField
+                      field_name='Quantity'
+                      field_val={this.state.quantity}
+                    />
                   </CardContent>
                   <CardActions>
                     <Button size='small'>Learn More</Button>
                   </CardActions>
                 </Card>
-                {/* <ListItemIcon>
-                  <StarBorder />
-                </ListItemIcon>
-                <ListItemText primary='Name' secondary="Newbee"/>
-              </ListItem>
-              <ListItem>
-                <ListItemIcon>
-                  <StarBorder />
-                </ListItemIcon>
-                <ListItemText primary='Name' secondary="Newbee"/> */}
               </ListItem>
             </List>
           </Collapse>
