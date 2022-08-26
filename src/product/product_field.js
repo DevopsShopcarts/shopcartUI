@@ -12,12 +12,12 @@ class ProductField extends React.Component {
   render () {
     return (
       <Grid container spacing={2}>
-        <Grid item xs='12' md={4}>
+        <Grid item xs={12} md={4}>
           <Typography sx={{ fontSize: 14 }} color='text.primary' gutterBottom>
             {this.props.field_name}:
           </Typography>
         </Grid>
-        <Grid item xs='12' md={8}>
+        <Grid item xs={12} md={8}>
           <Typography sx={{ fontSize: 14 }} color='text.primary' gutterBottom>
             {this.props.field_val}
           </Typography>
@@ -29,7 +29,7 @@ class ProductField extends React.Component {
 
 ProductField.propTypes = {
   field_name: PropTypes.string,
-  field_val: PropTypes.any
+  field_val: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
 }
 
 ProductField.defaultProps = {

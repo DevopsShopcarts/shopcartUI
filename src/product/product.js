@@ -20,6 +20,7 @@ import Button from '@mui/material/Button'
 import InventoryIcon from '@mui/icons-material/Inventory'
 // import Typography from '@mui/material/Typography'
 // import Grid from '@mui/material/Grid'
+import PropTypes from 'prop-types'
 
 import ProductField from './product_field'
 
@@ -48,7 +49,7 @@ class Product extends React.Component {
     return (
       <div>
         <List
-          sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}
+          sx={{ width: '100%', maxWidth: 360, minWidth: 320, bgcolor: 'background.paper' }}
           component='nav'
           aria-labelledby='nested-list-subheader'
           subheader={
@@ -99,4 +100,21 @@ class Product extends React.Component {
     )
   }
 }
+
+Product.propTypes = {
+  id: PropTypes.number,
+  name: PropTypes.string,
+  quantity: PropTypes.number,
+  price: PropTypes.number,
+  shopcart_id: PropTypes.number
+}
+
+Product.defaultProps ={
+  id: -1,
+  name: "Default",
+  quantity: -1,
+  price: -1,
+  shopcart_id: -1
+}
+
 export default Product
