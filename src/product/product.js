@@ -1,5 +1,5 @@
 import React from 'react'
-import ListSubheader from '@mui/material/ListSubheader'
+// import ListSubheader from '@mui/material/ListSubheader'
 import List from '@mui/material/List'
 import ListItemButton from '@mui/material/ListItemButton'
 import ListItemIcon from '@mui/material/ListItemIcon'
@@ -28,7 +28,7 @@ class Product extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      id: -1,
+      product_id: -1,
       name: '',
       quantity: -1,
       price: -1,
@@ -49,20 +49,25 @@ class Product extends React.Component {
     return (
       <div>
         <List
-          sx={{ width: '100%', maxWidth: 360, minWidth: 320, bgcolor: 'background.paper' }}
+          sx={{
+            width: '100%',
+            maxWidth: 360,
+            minWidth: 320,
+            bgcolor: 'background.paper'
+          }}
           component='nav'
           aria-labelledby='nested-list-subheader'
-          subheader={
-            <ListSubheader component='div' id='nested-list-subheader'>
-              Shopcart Search Result
-            </ListSubheader>
-          }
+          // subheader={
+          //   <ListSubheader component='div' id='nested-list-subheader'>
+          //     Shopcart Search Result
+          //   </ListSubheader>
+          // }
         >
           <ListItemButton onClick={this.handleClick}>
             <ListItemIcon>
               <InventoryIcon />
             </ListItemIcon>
-            <ListItemText primary={`Product: ${this.state.id}`} />
+            <ListItemText primary={`Product: ${this.state.product_id}`} />
             {this.state.open ? <ExpandLess /> : <ExpandMore />}
           </ListItemButton>
           <Collapse in={this.state.open} timeout='auto' unmountOnExit>
@@ -70,7 +75,7 @@ class Product extends React.Component {
               <ListItem>
                 <Card sx={{ minWidth: 320 }}>
                   <CardContent>
-                    <ProductField field_name='ID' field_val={this.state.id} />
+                    <ProductField field_name='ID' field_val={this.state.product_id} />
                     <ProductField
                       field_name='Shopcart ID'
                       field_val={this.state.shopcart_id}
@@ -100,21 +105,28 @@ class Product extends React.Component {
     )
   }
 }
-
-Product.propTypes = {
-  id: PropTypes.number,
+let productType = PropTypes.exact({
+  product_id: PropTypes.number,
   name: PropTypes.string,
   quantity: PropTypes.number,
   price: PropTypes.number,
   shopcart_id: PropTypes.number
+})
+
+Product.propTypes = {
+  product: productType,
+  index: PropTypes.number
 }
 
-Product.defaultProps ={
-  id: -1,
-  name: "Default",
-  quantity: -1,
-  price: -1,
-  shopcart_id: -1
+Product.defaultProps = {
+  product: {
+    product_id: -1,
+    name: 'Default',
+    quantity: -1,
+    price: -1,
+    shopcart_id: -1
+  },
+  index: -1
 }
 
-export default Product
+export { Product, productType }
