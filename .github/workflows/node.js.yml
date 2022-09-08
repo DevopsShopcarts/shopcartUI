@@ -28,7 +28,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: yarn install
-    - run: yarn test:coverage
+    - run: yarn test --coverage
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v2
       with:
