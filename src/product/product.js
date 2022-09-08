@@ -39,7 +39,6 @@ class Product extends React.Component {
     this.render = this.render.bind(this)
   }
   handleClick () {
-    console.log(this.state)
     this.setState((state, _) => {
       return { open: !state.open }
     })
@@ -63,11 +62,11 @@ class Product extends React.Component {
           //   </ListSubheader>
           // }
         >
-          <ListItemButton onClick={this.handleClick}>
+          <ListItemButton onClick={this.handleClick} product-button-id={this.props.product.product_id}>
             <ListItemIcon>
               <InventoryIcon />
             </ListItemIcon>
-            <ListItemText primary={`Product: ${this.state.product_id}`} />
+            <ListItemText primary={`Product: ${this.props.product.product_id}`} product-text-id={this.props.product.product_id}/>
             {this.state.open ? <ExpandLess /> : <ExpandMore />}
           </ListItemButton>
           <Collapse in={this.state.open} timeout='auto' unmountOnExit>
@@ -75,22 +74,22 @@ class Product extends React.Component {
               <ListItem>
                 <Card sx={{ minWidth: 320 }}>
                   <CardContent>
-                    <ProductField field_name='ID' field_val={this.state.product_id} />
+                    <ProductField field_name='Product ID' field_val={this.props.product.product_id} />
                     <ProductField
                       field_name='Shopcart ID'
-                      field_val={this.state.shopcart_id}
+                      field_val={this.props.product.shopcart_id}
                     />
                     <ProductField
                       field_name='Name'
-                      field_val={this.state.name}
+                      field_val={this.props.product.name}
                     />
                     <ProductField
                       field_name='Price'
-                      field_val={this.state.price}
+                      field_val={this.props.product.price}
                     />
                     <ProductField
                       field_name='Quantity'
-                      field_val={this.state.quantity}
+                      field_val={this.props.product.quantity}
                     />
                   </CardContent>
                   <CardActions>

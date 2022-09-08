@@ -7,18 +7,22 @@ import PropTypes from 'prop-types'
 class ProductField extends React.Component {
   constructor (props) {
     super(props)
+    this.convertFieldNameToID = this.convertFieldNameToID.bind(this)
     this.render = this.render.bind(this)
+  }
+  convertFieldNameToID(field_name) {
+    return field_name.split(" ").map(a=>a.toLowerCase()).join("_")
   }
   render () {
     return (
       <Grid container spacing={2}>
         <Grid item xs={12} md={4}>
-          <Typography sx={{ fontSize: 14 }} color='text.primary' gutterBottom>
+          <Typography sx={{ fontSize: 14 }} color='text.primary' gutterBottom product-field-name={this.convertFieldNameToID(this.props.field_name)}>
             {this.props.field_name}:
           </Typography>
         </Grid>
         <Grid item xs={12} md={8}>
-          <Typography sx={{ fontSize: 14 }} color='text.primary' gutterBottom>
+          <Typography sx={{ fontSize: 14 }} color='text.primary' gutterBottom product-field-val={this.convertFieldNameToID(this.props.field_name)}>
             {this.props.field_val}
           </Typography>
         </Grid>
