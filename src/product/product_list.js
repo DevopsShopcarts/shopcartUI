@@ -12,7 +12,7 @@ class ProductList extends React.Component {
     return (
       <div>
         {this.props.products.map((product, index) => (
-          <Product product={product}></Product>
+          <Product product={product} key={product.product_id}></Product>
         ))}
       </div>
     )
