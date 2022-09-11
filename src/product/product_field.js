@@ -2,22 +2,27 @@ import React from 'react'
 
 import Typography from '@mui/material/Typography'
 import Grid from '@mui/material/Grid'
+import PropTypes from 'prop-types'
 
-class Product_Field {
+class ProductField extends React.Component {
   constructor (props) {
     super(props)
+    this.convertFieldNameToID = this.convertFieldNameToID.bind(this)
     this.render = this.render.bind(this)
+  }
+  convertFieldNameToID(field_name) {
+    return field_name.split(" ").map(a=>a.toLowerCase()).join("_")
   }
   render () {
     return (
       <Grid container spacing={2}>
-        <Grid item xs='12' md={4}>
-          <Typography sx={{ fontSize: 14 }} color='text.secondary' gutterBottom>
-            {this.props.field_name}
+        <Grid item xs={12} md={4}>
+          <Typography sx={{ fontSize: 14 }} color='text.primary' gutterBottom product-field-name={this.convertFieldNameToID(this.props.field_name)}>
+            {this.props.field_name}:
           </Typography>
         </Grid>
-        <Grid item xs='12' md={8}>
-          <Typography sx={{ fontSize: 14 }} color='text.secondary' gutterBottom>
+        <Grid item xs={12} md={8}>
+          <Typography sx={{ fontSize: 14 }} color='text.primary' gutterBottom product-field-val={this.convertFieldNameToID(this.props.field_name)}>
             {this.props.field_val}
           </Typography>
         </Grid>
@@ -25,3 +30,15 @@ class Product_Field {
     )
   }
 }
+
+ProductField.propTypes = {
+  field_name: PropTypes.string,
+  field_val: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+}
+
+ProductField.defaultProps = {
+  field_name: 'Field Not Found',
+  field_val: 'Field Value Not Found'
+}
+
+export default ProductField

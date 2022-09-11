@@ -1,0 +1,4 @@
+ignore:
+  - "src/index.js"
+  - "src/reportWebVitals.js"
+  - "src/App.js"

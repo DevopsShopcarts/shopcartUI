@@ -1,3 +1,4 @@
+[![codecov](https://codecov.io/gh/DevopsShopcarts/shopcartUI/branch/prototype/graph/badge.svg?token=TE93GY4S2C)](https://codecov.io/gh/DevopsShopcarts/shopcartUI)
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
